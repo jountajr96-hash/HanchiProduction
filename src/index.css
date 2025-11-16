@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 26% 8%;
+    --foreground: 180 100% 98%;
+
+    --card: 220 26% 12%;
+    --card-foreground: 180 100% 98%;
+
+    --popover: 220 26% 10%;
+    --popover-foreground: 180 100% 98%;
+
+    --primary: 185 95% 55%;
+    --primary-foreground: 220 26% 8%;
+
+    --secondary: 220 26% 16%;
+    --secondary-foreground: 180 100% 98%;
+
+    --muted: 220 26% 16%;
+    --muted-foreground: 180 10% 65%;
+
+    --accent: 185 95% 55%;
+    --accent-foreground: 220 26% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 180 100% 98%;
+
+    --border: 220 26% 20%;
+    --input: 220 26% 20%;
+    --ring: 185 95% 55%;
+
+    --radius: 0.75rem;
+
+    --gradient-start: 220 26% 8%;
+    --gradient-end: 220 40% 12%;
+    
+    --glow-cyan: 185 95% 55%;
+    --glow-blue: 220 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-end)) 100%);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.5),
+                 0 0 40px hsl(var(--glow-cyan) / 0.3);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 30px hsl(var(--glow-cyan) / 0.2),
+                0 0 60px hsl(var(--glow-blue) / 0.1);
+  }
+  
+  .animate-fall {
+    animation: fall linear infinite;
+  }
+  
+  @keyframes fall {
+    from {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
